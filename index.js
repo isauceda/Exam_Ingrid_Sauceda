@@ -1,9 +1,11 @@
 import express from 'express';
 const app = express();
 import { cliente } from './rutas/apiCliente.js'
+
+app.use(express.json());
 const port = 4000;
 
-app.get(' ', callback)
+app.use ('/api/cliente', cliente)
 
 app.listen(port, ()=>{
 

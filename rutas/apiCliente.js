@@ -1,18 +1,32 @@
 import  express  from "express"
 const cliente = express();
+import {db} from '../Basededatos/conn.js'
 
 
+cliente.get('', async (req,res)=>{
 
-cliente.get('',(req,res)=>{
+    const sql = `select * from tbl_cliente`
+    const result = await db.query (sql);
 
-res.json(cliente);
+res.json(result);
 
 })
 
-cliente.post('',(req, res)=>{
+cliente.post('', async(req,res)=>{
 
+    const {nombre, apellido, direccion}= req.body;
+    const params = [nombre, apellido, direccion];
+
+    const sql = `insert into tbl_cliente
+                (nombre, apellido, direccion)
+                values
+                ($1, $2, $3) returning *`
+
+
+   const result = await db.query (sql, params);
+
+   res.json(result);
     
-})
-
+    })
 export{ cliente }
 
