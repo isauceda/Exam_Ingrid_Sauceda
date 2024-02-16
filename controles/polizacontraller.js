@@ -1,4 +1,4 @@
-import {db} from '../Basededatos/conn.js';
+import {db} from '../db/conn.js';
 
 const getPoliza = async (req,res)=>{
 

@@ -3,13 +3,13 @@ import dotenv from 'dotenv';
 dotenv.config();
 const pgp = pg()
 
-const use = process.env.user;
+const user = process.env.user;
 const pass = process.env.pass;
 const dataBase = process.env.db;
 const host = process. env.host;
-const portDb = process.env.port_db;
+const portdb = process.env.port_db;
 
-const cnstr = `postgresql://${user}:${pass}@${host}:${portDb}/${dataBase}`;
+const cnstr = `postgresql://${user}:${pass}@${host}:${portdb}/${dataBase}`;
 const db = pgp (cnstr);
 
 db.connect()

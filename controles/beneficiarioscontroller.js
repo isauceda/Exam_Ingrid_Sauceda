@@ -1,23 +1,23 @@
 import {db} from '../db/conn.js'
 
-const getcliente = async (req,res)=>{
+const getbeneficiario = async (req,res)=>{
 
-    const sql = `select * from tbl_cliente order by id`
+    const sql = `select * from tbl_beneficiarios order by id`
     const result = await db.query (sql);
 
 res.json(result);
 
 }
 
-const postcliente = async(req,res)=>{
+const postbeneficiario = async(req,res)=>{
 
-    const {nombre, apellido, direccion}= req.body;
-    const params = [nombre, apellido, direccion];
+    const {nombre, apellido}= req.body;
+    const params = [nombre, apellido];
 
-    const sql = `insert into tbl_cliente
-                (nombre, apellido, direccion)
+    const sql = `insert into tbl_beneficiarios
+                (nombre, apellido)
                 values
-                ($1, $2, $3) returning *`
+                ($1, $2) returning *`
 
 
    const result = await db.query (sql, params);
@@ -26,24 +26,22 @@ const postcliente = async(req,res)=>{
     
     }
 
-    const putcliente =  async(req, res)=>{
+    const putbeneficiario =  async(req, res)=>{
 
-        const {nombre, apellido, direccion} = req.body
+        const {nombre, apellido} = req.body
         const {id} = req.params
 
         const params = [
             nombre, 
             apellido,
-            direccion,
              id
         ]
 
-        const sql = `update tbl_cliente
+        const sql = `update tbl_beneficiarios
         set
          nombre = $1,
          apellido = $2,
-         direccion= $3
-         where id = $4 returning *`
+         where id = $3 returning *`
 
          const result = await db.query (sql, params)
 
@@ -51,7 +49,7 @@ const postcliente = async(req,res)=>{
 
     }
 
-    const deletecliente = async (req, res)=>{
+    const deletebeneficiario = async (req, res)=>{
 
         const params = [
       req.params.id];
@@ -64,4 +62,4 @@ const postcliente = async(req,res)=>{
 
   }
 
-export {getcliente , postcliente,putcliente, deletecliente}
+export {getbeneficiario , postbeneficiario,putbeneficiario, deletebeneficiario}

@@ -26,3 +26,21 @@ create table tbl_agentes
     fecha_ingreso TIMESTAMP DEFAULT current_timestamp
 );
 
+create table tbl_pagos
+(
+    id serial primary key,
+    fecha_pago NUMERIC,
+    monto NUMERIC
+    id_poliza int REFERENCES  tbl_poliza (id),
+    creado TIMESTAMP DEFAULT current_timestamp
+);
+
+create table tbl_beneficiarios
+(
+    id serial primary key,
+    nombre varchar (200),
+    Apellido VARCHAR (200),
+    id_poliza int REFERENCES  tbl_poliza (id),
+    creado TIMESTAMP DEFAULT current_timestamp
+)
+

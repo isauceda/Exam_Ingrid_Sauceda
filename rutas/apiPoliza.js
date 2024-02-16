@@ -1,15 +1,15 @@
 import express  from "express";
-const poliza = express();
+const Poliza = express();
 import { getPoliza, postPoliza, putPoliza, deletePoliza } from "../controles/polizacontraller.js";
 
 
-poliza.get('', getPoliza);
+Poliza.get('', getPoliza);
 
-poliza.post('', postPoliza);
+Poliza.post('', postPoliza);
 
-poliza.put( '/:id',putPoliza);
+Poliza.put( '/:id',putPoliza);
 
-poliza.delete( '/:id', deletePoliza)
+Poliza.delete( '/:id', deletePoliza)
 
-export{ poliza }
+export{ Poliza }
 
