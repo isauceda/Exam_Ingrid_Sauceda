@@ -44,3 +44,11 @@ create table tbl_beneficiarios
     creado TIMESTAMP DEFAULT current_timestamp
 )
 
+create table tbl_siniestros
+(
+    id serial primary key,
+    descripcion varchar (200),
+    fecha_siniestro TIMESTAMP,
+    id_poliza int REFERENCES  tbl_poliza (id),
+    creado TIMESTAMP DEFAULT current_timestamp
+)
