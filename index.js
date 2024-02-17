@@ -1,13 +1,16 @@
 import express from 'express';
-const app = express();
+
 import { cliente } from './rutas/apiCliente.js'
 import { Poliza } from  './rutas/apiPoliza.js'
 import { Pagos } from './rutas/apiPagos.js'
 import { beneficiario } from './rutas/apiBenefiario.js'
-import {Siniestros } from './rutas/apiSiniestros.js';
+import {Siniestros } from './rutas/apiSiniestros.js'
 
-app.use(express.json());
-const port = 4000;
+const app = express();
+
+app.use ( express.json());
+
+const port = 9100;
 
 app.use ('/api/cliente', cliente);
 app.use ('/api/poliza', Poliza);

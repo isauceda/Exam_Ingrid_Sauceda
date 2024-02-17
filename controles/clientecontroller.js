@@ -11,13 +11,13 @@ res.json(result);
 
 const postcliente = async(req,res)=>{
 
-    const {nombre, apellido, direccion}= req.body;
+    const {nombre, apellido, direccion, id_poliza}= req.body;
     const params = [nombre, apellido, direccion];
 
     const sql = `insert into tbl_cliente
-                (nombre, apellido, direccion)
+                (nombre, apellido, direccion, id_poliza)
                 values
-                ($1, $2, $3) returning *`
+                ($1, $2, $3, $4) returning *`
 
 
    const result = await db.query (sql, params);
@@ -28,13 +28,14 @@ const postcliente = async(req,res)=>{
 
     const putcliente =  async(req, res)=>{
 
-        const {nombre, apellido, direccion} = req.body
+        const {nombre, apellido, direccion, id_poliza} = req.body
         const {id} = req.params
 
         const params = [
             nombre, 
             apellido,
             direccion,
+            id_poliza,
              id
         ]
 
@@ -43,7 +44,8 @@ const postcliente = async(req,res)=>{
          nombre = $1,
          apellido = $2,
          direccion= $3
-         where id = $4 returning *`
+         id_poliza = $4,
+         where id = $5 returning *`
 
          const result = await db.query (sql, params)
 

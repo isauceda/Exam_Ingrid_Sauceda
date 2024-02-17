@@ -40,7 +40,6 @@ create table tbl_beneficiarios
     id serial primary key,
     nombre varchar (200),
     Apellido VARCHAR (200),
-    id_poliza int REFERENCES  tbl_poliza (id),
     creado TIMESTAMP DEFAULT current_timestamp
 )
 
@@ -49,6 +48,13 @@ create table tbl_siniestros
     id serial primary key,
     descripcion varchar (200),
     fecha_siniestro TIMESTAMP,
-    id_poliza int REFERENCES  tbl_poliza (id),
     creado TIMESTAMP DEFAULT current_timestamp
 )
+poliza
+select * from tbl_poliza order by id
+
+
+app.use ( express.json())
+
+
+const cnstr = `postgresql://${user}:${pass}@${host}:${portdb}/${dataBase}`
